@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+<bean id="employee1" class="com.jay.entity.Employee">
+<constructor-arg name="id" value="101"></constructor-arg>  
+<constructor-arg name="name" value="John"></constructor-arg>
+<constructor-arg name="dept" value="D-1011"></constructor-arg>
+<constructor-arg name="sal" value="70000"></constructor-arg>
+<constructor-arg name="isMarried" value="true"></constructor-arg>
+<constructor-arg name="emailId" value="john@gmail.com"></constructor-arg>
+<constructor-arg name="phoneNo" value="987654321"></constructor-arg>
+<constructor-arg name="address" ref="address1"></constructor-arg>
+</bean> 
+<!-- Employee employee1 = new Employee(101,"John","D-1011") -->
+<bean id="address1" class="com.jay.entity.Address">
+<constructor-arg name="id" value="1"></constructor-arg>
+<constructor-arg name="street1" value="S-1"></constructor-arg>
+<constructor-arg name="street2" value="S-2"></constructor-arg>
+<constructor-arg name="city" value="city-1"></constructor-arg>
+<constructor-arg name="state" value="state-1"></constructor-arg>
+<constructor-arg name="district" value="district-1"></constructor-arg>
+<constructor-arg name="pin" value="pin-1"></constructor-arg>
+</bean>
+<!-- Address address = new Address(1,"S-1") -->
+<bean id="employeeService" class="com.jay.service.EmployeeService">
+<constructor-arg name="employee" ref="employee1"></constructor-arg>
+</bean>
+<bean id="employeeController" class="com.jay.ctrl.EmployeeController">
+<constructor-arg name="employeeService" ref="employeeService"></constructor-arg>
+</bean>
+
+ <bean id="date" class="java.util.Date" scope="prototype"></bean>
+  
+</beans> 
